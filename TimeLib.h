@@ -140,6 +140,7 @@ time_t makeTime(const tmElements_t &tm);  // convert time elements into time_t
 
 /* custom additons */
 bool isDST(time_t t);
+bool isDaytime();
 
 } // extern "C++"
 #endif // __cplusplus

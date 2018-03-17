@@ -343,4 +343,11 @@ bool isDST(time_t t) {
   return (t >= dstStart && t < dstEnd);
 }
 
-
+bool isDaytime() {
+    int dayOfYear = int((month()-1) * 30.5) + day();
+  
+    int sunrise = (392 + 117*cos((dayOfYear+8)/58.09))-60*isDST(now());
+    int sunset = (1144 - 170*cos((dayOfYear+8)/58.09))-60*isDST(now());
+    int actualTime = hour()*60+minute();
+    return (actualTime > sunrise && actualTime < sunset);
+}
